@@ -1,0 +1,51 @@
+{
+    "name": "malefici/test-ci",
+    "description": "Test repository for education purpose",
+    "type": "project",
+    "version": "0.0.1",
+    "keywords": ["ci", "education", "symfony"],
+    "autoload": {
+        "psr-4": {
+            "Malefici\\TestCi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Malefici\\TestCi\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Malefici",
+            "email": "nikita@malefici.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/config": "7.1.x-dev",
+        "symfony/http-kernel": "7.1.x-dev",
+        "symfony/http-foundation": "7.1.x-dev",
+        "symfony/routing": "7.1.x-dev",
+        "symfony/dependency-injection": "7.1.x-dev",
+        "symfony/framework-bundle": "7.1.x-dev",
+        "symfony/yaml": "7.1.x-dev",
+        "symfony/twig-bundle": "7.1.x-dev",
+        "symfony/web-profiler-bundle": "7.1.x-dev"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "7.1.x-dev"
+    },
+    "scripts": {
+        "auto-scripts": {
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "test": {
+            "test": "vendor/bin/simple-phpunit tests/"
+        }
+    }
+}
