@@ -31,10 +31,12 @@
         "symfony/framework-bundle": "^7.0",
         "symfony/yaml": "^7.0",
         "symfony/twig-bundle": "^7.0",
-        "symfony/web-profiler-bundle": "^7.0"
+        "symfony/web-profiler-bundle": "^7.0",
+        "symfony/dotenv": "^7.0"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "7.1.x-dev"
+        "symfony/phpunit-bridge": "7.1.x-dev",
+        "symfony/test-pack": "^1.1"
     },
     "scripts": {
         "auto-scripts": {

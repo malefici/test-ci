@@ -1,11 +1,14 @@
 <?php
 
 use Malefici\TestCi\Kernel;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
-require __DIR__.'/../vendor/autoload.php';
+require dirname(__DIR__).'/vendor/autoload.php';
 
-$kernel = new Kernel('dev', true);
+(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+
+$kernel = new Kernel($_ENV['APP_ENV'], (bool) $_ENV['APP_DEBUG']);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
