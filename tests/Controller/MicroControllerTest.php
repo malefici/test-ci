@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class MicroControllerTest extends WebTestCase
 {
-    public function testSomething(): void
+    public function testRandom(): void
     {
         // This calls KernelTestCase::bootKernel(), and creates a
         // "client" that is acting as the browser
