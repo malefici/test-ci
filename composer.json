@@ -20,17 +20,19 @@
             "email": "nikita@malefici.com"
         }
     ],
-    "minimum-stability": "dev",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
-        "symfony/config": "7.1.x-dev",
-        "symfony/http-kernel": "7.1.x-dev",
-        "symfony/http-foundation": "7.1.x-dev",
-        "symfony/routing": "7.1.x-dev",
-        "symfony/dependency-injection": "7.1.x-dev",
-        "symfony/framework-bundle": "7.1.x-dev",
-        "symfony/yaml": "7.1.x-dev",
-        "symfony/twig-bundle": "7.1.x-dev",
-        "symfony/web-profiler-bundle": "7.1.x-dev"
+        "symfony/config": "^7.0",
+        "symfony/http-kernel": "^7.0",
+        "symfony/http-foundation": "^7.0",
+        "symfony/routing": "^7.0",
+        "symfony/dependency-injection": "^7.0",
+        "symfony/framework-bundle": "^7.0",
+        "symfony/yaml": "^7.0",
+        "symfony/twig-bundle": "^7.0",
+        "symfony/web-profiler-bundle": "^7.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "7.1.x-dev"
