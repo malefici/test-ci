@@ -2,7 +2,6 @@
     "name": "malefici/test-ci",
     "description": "Test repository for education purpose",
     "type": "project",
-    "version": "0.0.1",
     "keywords": ["ci", "education", "symfony"],
     "autoload": {
         "psr-4": {
