@@ -67,7 +67,7 @@ jobs:
       - name: Run test suite
         run: composer run-script test
 
-  t1:
+  deploy:
     needs:
       - unit-tests
       - integration-tests
