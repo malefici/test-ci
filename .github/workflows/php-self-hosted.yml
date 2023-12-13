@@ -73,7 +73,9 @@ jobs:
       - integration-tests
     runs-on:
       - self-hosted
-
+    environment:
+      name: production
+      url: https://test-ci.malefici.com
     steps:
       - name: Setup SSH
         run: |
