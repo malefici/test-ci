@@ -93,4 +93,4 @@ jobs:
           rsync -rt ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
 #          rsync -vrm ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
       - name: Restart php-fpm
-        run: ssh ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }} "systemctl restart php8.2-fpm"
+        run: ssh ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }} "sudo systemctl restart php8.2-fpm"
