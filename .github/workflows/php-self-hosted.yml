@@ -39,3 +39,13 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
+
+  tests:
+    needs: build
+    runs-on:
+      - self-hosted
+
+    steps:
+
+      - name: Run test suite
+        run: composer run-script test
