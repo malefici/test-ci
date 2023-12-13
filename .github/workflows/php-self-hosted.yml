@@ -56,3 +56,25 @@ jobs:
 
       - name: Run test suite
         run: composer run-script test
+
+  integration-tests-report:
+    needs: integration-tests
+    runs-on:
+      - self-hosted
+
+    steps:
+
+      - name: Run test suite
+        run: composer run-script test
+
+  t1:
+    needs:
+      - unit-tests
+      - integration-tests
+    runs-on:
+      - self-hosted
+
+    steps:
+
+      - name: Run test suite
+        run: composer run-script test
