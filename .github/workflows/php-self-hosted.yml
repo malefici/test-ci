@@ -77,6 +77,9 @@ jobs:
       name: production
       url: https://test-ci.malefici.com
     steps:
+#      - name: Install rsync
+#        run: |
+#          apt-get install rsync
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh/
@@ -87,5 +90,5 @@ jobs:
           ssh-keyscan -H ${{ vars.HOST_PRODUCTION_IP }} >> ~/.ssh/known_hosts
       - name: copy builds to server
         run: |
-          rsync -vrm ./* ${{ vars.HOST_PRODUCTION_IP }}:~
-          ssh ${{ vars.HOST_PRODUCTION_IP }} "systemctl restart php8.2-fpm"
+          rsync -vrm ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
+          ssh ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }} "systemctl restart php8.2-fpm"
