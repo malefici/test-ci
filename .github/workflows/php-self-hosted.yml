@@ -86,4 +86,4 @@ jobs:
       - name: copy builds to server
         run: |
           rsync -vrm  ./* ${{ secrets.USER_IP }}:~
-          ssh ${{ secrets.USER_IP }} "systemctl restart php8.2-fpm"
+          ssh ${{ secrets.HOST_PRODUCTION_IP }} "systemctl restart php8.2-fpm"
