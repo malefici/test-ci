@@ -2,8 +2,15 @@
 
 namespace Malefici\TestCi;
 
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
 use Malefici\TestCi\DependencyInjection\AppExtension;
+use Malefici\TestCi\Service\NewsletterGenerator;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Bundle\MakerBundle\MakerBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
+use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -15,13 +22,20 @@ class Kernel extends BaseKernel
 
     public function registerBundles(): array
     {
+//        echo 1; exit;
         $bundles = [
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \Symfony\Bundle\TwigBundle\TwigBundle(),
+            new FrameworkBundle(),
+            new TwigBundle(),
+            new DoctrineBundle(),
+            new DoctrineMigrationsBundle(),
+            new MakerBundle(),
         ];
 
+//        var_dump($this->getEnvironment()); exit;
+
         if ('dev' === $this->getEnvironment()) {
-            $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new WebProfilerBundle();
+//            $bundles[] = new MakerBundle();
         }
 
         return $bundles;
@@ -34,11 +48,12 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
-        $container->import(__DIR__.'/../config/framework.yaml');
+        $container->import(__DIR__.'/../config/*');
 
         // register all classes in /src/ as service
         $container->services()
             ->load('Malefici\\TestCi\\', __DIR__.'/*')
+            ->public() // for tests
             ->autowire()
             ->autoconfigure()
         ;

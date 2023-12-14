@@ -34,11 +34,15 @@
         "symfony/web-profiler-bundle": "^7.0",
         "symfony/dotenv": "^7.0",
         "symfony/runtime": "^7.0",
-        "symfony/console": "^7.0"
+        "symfony/console": "^7.0",
+        "symfony/orm-pack": "^2.4",
+        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-migrations-bundle": "^3.3"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "7.1.x-dev",
-        "symfony/test-pack": "^1.1"
+        "symfony/test-pack": "^1.1",
+        "symfony/maker-bundle": "^1.52"
     },
     "scripts": {
         "auto-scripts": {
