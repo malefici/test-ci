@@ -14,6 +14,7 @@ class NewsletterFixture extends Fixture
         // $manager->persist($product);
 
         $newsletter = new Newsletter();
+        $newsletter->setTitle('Title');
         $newsletter->setContent(<<<MARKDOWN
 # Hello
 
