@@ -13,9 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MicroController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(Request $request): Response
+    public function index(Request $request, NewsletterRepository $newsletterRepository): Response
     {
-        return $this->render('micro/index.html.twig', []);
+        return $this->render('micro/index.html.twig', [
+            'news' => $newsletterRepository->findAll(),
+        ]);
     }
 
     #[Route('/random/{limit}', name: 'app_random')]
@@ -28,8 +30,8 @@ class MicroController extends AbstractController
         ]);
     }
 
-    #[Route('/newsletter/{id}', name: 'app_newsletter')]
-    public function newsletter(int $id, LoggerInterface$logger, NewsletterRepository $newsletterRepository): Response
+    #[Route('/newsletter/{id}', name: 'app_newsletter_view')]
+    public function newsletter(int $id, LoggerInterface $logger, NewsletterRepository $newsletterRepository): Response
     {
 //        $logger->critical('ads');
 

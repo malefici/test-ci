@@ -21,6 +21,9 @@ class Newsletter
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
+    #[ORM\Column(length: 80)]
+    private ?string $title = null;
+
     public function __construct()
     {
 //        $this->createdAt = new DateTimeImmutable();
@@ -44,6 +47,18 @@ class Newsletter
     public function setContent(string $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): static
+    {
+        $this->title = $title;
 
         return $this;
     }

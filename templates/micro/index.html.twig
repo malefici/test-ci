@@ -5,4 +5,11 @@
 {% block body %}
     <h1>Welcome!</h1>
     <p>This is the test application.</p>
+
+    <h2>News</h2>
+    <ul>
+        {% for newsletter in news %}
+            <li><a href="{{ path('app_newsletter_view', { id: newsletter.id }) }}">{{ newsletter.title }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
