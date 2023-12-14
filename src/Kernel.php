@@ -15,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 class Kernel extends BaseKernel
 {
@@ -28,14 +29,15 @@ class Kernel extends BaseKernel
             new TwigBundle(),
             new DoctrineBundle(),
             new DoctrineMigrationsBundle(),
-            new MakerBundle(),
+            new TwigExtraBundle(),
         ];
 
 //        var_dump($this->getEnvironment()); exit;
 
-        if ('dev' === $this->getEnvironment()) {
+        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new WebProfilerBundle();
-//            $bundles[] = new MakerBundle();
+            $bundles[] = new MakerBundle();
+            $bundles[] = new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;

@@ -37,15 +37,20 @@
         "symfony/console": "^7.0",
         "symfony/orm-pack": "^2.4",
         "doctrine/doctrine-bundle": "^2.11",
-        "doctrine/doctrine-migrations-bundle": "^3.3"
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "twig/extra-bundle": "^3.8",
+        "twig/markdown-extra": "^3.8",
+        "league/commonmark": "^2.4"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "7.1.x-dev",
         "symfony/test-pack": "^1.1",
-        "symfony/maker-bundle": "^1.52"
+        "symfony/maker-bundle": "^1.52",
+        "doctrine/doctrine-fixtures-bundle": "^3.5"
     },
     "scripts": {
         "auto-scripts": {
+            "cache:clear": "bin/console cache:clear"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -54,7 +59,7 @@
             "@auto-scripts"
         ],
         "test": {
-            "test": "vendor/bin/simple-phpunit tests/"
+            "test": "vendor/bin/phpunit tests/"
         }
     },
     "config": {

@@ -34,6 +34,13 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Setup database
+      run: |
+        bin/console doctrine:database:drop --force
+        bin/console doctrine:database:create
+        bin/console doctrine:migrations:migrate --no-interaction
+        bin/console doctrine:fixtures:load --purge-with-truncate --no-interaction
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 

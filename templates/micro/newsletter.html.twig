@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Newsletter{% endblock %}
+
+{% block body %}
+    {{ newsletter.content|markdown_to_html }}
+{% endblock %}
