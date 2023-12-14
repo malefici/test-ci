@@ -29,6 +29,7 @@ class Kernel extends BaseKernel
             new TwigBundle(),
             new DoctrineBundle(),
             new DoctrineMigrationsBundle(),
+            new MakerBundle(),
             new TwigExtraBundle(),
         ];
 
@@ -36,7 +37,7 @@ class Kernel extends BaseKernel
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new WebProfilerBundle();
-            $bundles[] = new MakerBundle();
+//            $bundles[] = new MakerBundle();
             $bundles[] = new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
