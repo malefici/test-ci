@@ -94,3 +94,16 @@ jobs:
 #          rsync -vrm ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
       - name: Restart php-fpm
         run: ssh ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }} "bin/console cache:clear; sudo systemctl restart php8.2-fpm"
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Deploy is done
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
