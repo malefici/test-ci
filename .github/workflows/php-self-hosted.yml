@@ -97,7 +97,7 @@ jobs:
           ssh-keyscan -H ${{ vars.HOST_PRODUCTION_IP }} >> ~/.ssh/known_hosts
       - name: copy builds to server
         run: |
-          rsync -rt ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
+          rsync -rt --exclude var/* ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
 #          rsync -vrm ./* ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }}:~
       - name: Restart php-fpm
         run: ssh ${{ secrets.SSH_USERNAME }}@${{ vars.HOST_PRODUCTION_IP }} "bin/console cache:clear --env=prod; bin/console cache:warmup --env=prod; doctrine:migrations:migrate --no-interaction; sudo systemctl restart php8.2-fpm"
